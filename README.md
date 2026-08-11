@@ -33,117 +33,6 @@ that idea to demonstrate a simple pay-per-article model:
 This provides a small example of how stablecoin payments could become a native
 part of applications, APIs, and eventually autonomous software.
 
-## Features
-
-- React frontend built with Vite
-- Flask API using Blueprints
-- SQLite article storage
-- Public article listing endpoint
-- Paywalled individual article endpoint
-- x402 `402 Payment Required` payment flow
-- USDC micropayments on Base Sepolia
-- `$0.01` pay-per-article purchases
-- Browser wallet support
-- Base Sepolia network switching
-- Temporary post-purchase access
-- S3-hosted article assets
-- Vite development proxy for `/api`
-
-## Tech Stack
-
-### Frontend
-
-- React
-- Vite
-- JavaScript / TypeScript
-- `viem`
-- `@x402/fetch`
-- `@x402/evm`
-
-### Backend
-
-- Python
-- Flask
-- Flask Blueprints
-- SQLite
-- x402
-
-### Blockchain
-
-- Base Sepolia
-- Chain ID: `84532`
-- CAIP-2 network ID: `eip155:84532`
-- Hex chain ID: `0x14a34`
-- USDC testnet payments
-- x402 exact EVM payment scheme
-
-## Architecture
-
-```text
-┌──────────────────┐
-│      Reader      │
-│  React + Wallet  │
-└────────┬─────────┘
-         │
-         │ GET /api/articles/<slug>
-         ▼
-┌──────────────────┐
-│    Flask API     │
-│                  │
-│  x402 middleware │
-└────────┬─────────┘
-         │
-         │ 402 Payment Required
-         ▼
-┌──────────────────┐
-│   x402 Client    │
-│                  │
-│ Create payment   │
-│ with user wallet │
-└────────┬─────────┘
-         │
-         │ Signed payment
-         ▼
-┌──────────────────┐
-│ x402 Facilitator │
-└────────┬─────────┘
-         │
-         │ Verify / settle
-         ▼
-┌──────────────────┐
-│   Base Sepolia   │
-│       USDC       │
-└────────┬─────────┘
-         │
-         │ Payment accepted
-         ▼
-┌──────────────────┐
-│  Premium Article │
-└──────────────────┘
-```
-
-## API
-
-### List Articles
-
-```http
-GET /api/articles
-```
-
-Returns the public list of articles and metadata needed by the frontend.
-
-### Get Article
-
-```http
-GET /api/articles/<slug>
-```
-
-Free articles can be returned normally.
-
-Premium articles require an x402 payment. An unpaid request receives an HTTP
-`402 Payment Required` response containing the payment requirements.
-
-After a valid payment is supplied, the server returns the protected article.
 
 ## x402 Payment Flow
 
@@ -311,16 +200,6 @@ HTTP/1.1 402 Payment Required
 The browser client handles the payment workflow automatically by interpreting
 the payment requirements, requesting wallet approval, and retrying the request.
 
-## Temporary Access
-
-After a successful purchase, the application can issue temporary access so the
-same reader does not need to immediately purchase the article again.
-
-The project uses a **24-hour access-token approach** for this behavior.
-
-This keeps the x402 payment responsible for unlocking the content while
-separating the blockchain transaction from normal subsequent article requests.
-
 ## Testnet Only
 
 Goodwell Gazette is intentionally a testnet project.
@@ -359,22 +238,3 @@ request.
 That makes x402 particularly interesting for applications where automated
 software or AI agents need to purchase digital resources without going through
 a traditional human checkout flow.
-
-## Project Status
-
-Goodwell Gazette is a proof of concept and learning project focused on x402,
-stablecoin micropayments, wallet interaction, and HTTP-native payments.
-
-Future improvements could include:
-
-- Improved purchase history
-- More robust access-token storage
-- Better wallet connection UX
-- Additional x402 payment options
-- Production-style caching
-- Automated integration tests
-- Expanded article and publisher tooling
-
-## License
-
-Add the license you want to use for this repository here.
