@@ -1,0 +1,38 @@
+.site-nav {
+  background-color: #333333;
+  font-family: var(--font-ui);
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  position: relative;
+  width: 100vw;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  max-width: 100%;
+  padding: 0 1.5rem;
+}
+
+.site-nav__item {
+  flex: 0 0 auto;
+}
+
+.site-nav__link {
+  color: white;
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.site-nav__link:hover {
+  background-color: #111111;
+}

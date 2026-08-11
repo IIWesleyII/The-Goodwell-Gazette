@@ -1,0 +1,40 @@
+.header {
+  align-items: center;
+  color: #0f0f0f;
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  justify-content: center;
+  padding: 1.35rem 1rem 1rem;
+  text-align: center;
+}
+
+.header__mark {
+  flex: 0 0 auto;
+  height: clamp(3rem, 8vw, 6rem);
+  object-fit: contain;
+  width: clamp(3rem, 8vw, 6rem);
+}
+
+.header h1 {
+  font-family: var(--font-headline);
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .header {
+    gap: 0.65rem;
+    padding-inline: 0.5rem;
+  }
+
+  .header__mark {
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+
+  .header h1 {
+    font-size: clamp(1.9rem, 10vw, 2.5rem);
+  }
+}

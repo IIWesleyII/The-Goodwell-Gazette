@@ -1,0 +1,30 @@
+#root {
+  min-height: 100vh;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(143, 31, 18, 0.12), transparent 28rem),
+    #f7f2e8;
+  color: #161616;
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+.app-shell {
+  margin: 0 auto;
+  max-width: 100rem;
+  padding: 0 2rem 3rem;
+}
+
+.homepage {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.app-status {
+  color: #3b3b3b;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  margin: 3rem auto;
+}
