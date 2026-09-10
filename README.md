@@ -1,6 +1,6 @@
 # Goodwell Gazette
 
-Goodwell Gazette is a proof-of-concept news application that demonstrates how
+Goodwell Gazette is a news application that demonstrates how
 [x402](https://www.x402.org/) can be used to sell access to individual pieces of
 web content with stablecoin micropayments.
 
